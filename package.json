@@ -43,7 +43,7 @@
 		"dev": "npm-run-all -p *:dev",
 		"watch": "npm-run-all -p *:watch",
 		"build": "npm-run-all *:production",
-		"login:wordmove": "docker exec -it wordpress_test_wordmove /bin/bash",
+		"login:wordmove": "docker exec -it hogehoge_wordmove /bin/bash",
 		"clean": "rimraf ./public",
 		"prestart": "docker-compose up -d",
 		"start": "npm run watch"

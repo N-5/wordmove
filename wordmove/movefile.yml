@@ -2,30 +2,36 @@ global:
   sql_adapter: default
 
 local:
-  vhost: "http://localhost:9000"
-  wordpress_path: "/var/www/html/"
+  vhost: http://localhost:9000
+  wordpress_path: /var/www/html # use an absolute path here
+
   database:
-    name: "<%= ENV['WORDPRESS_DB_NAME'] %>"
-    user: "<%= ENV['WORDPRESS_DB_NAME'] %>"
-    password: "<%= ENV['WORDPRESS_DB_PASSWORD'] %>"
-    host: "mariadb"
+    name: wordpress
+    user: wordpress
+    password: wordpress # could be blank, so always use quotes around
+    host: mariadb
 
 staging:
-  vhost: "<%= ENV['STAGING_URL'] %>"
-  wordpress_path: "<%= ENV['STAGING_DIR_PATH'] %>"
+  vhost: "http://dev19.preview-site.click"
+  wordpress_path: /home/sites/heteml/users/f/u/r/furazoa/web/preview-site.click/dev19 # use an absolute path here
+
+  ssh:
+    host: ssh118.heteml.jp
+    user: furazoa
+    port: 2222
+    rsync_options: -va
 
   database:
-    name: "<%= ENV['STAGING_DB_NAME'] %>"
-    user: "<%= ENV['STAGING_DB_USER'] %>"
-    password: "<%= ENV['STAGING_DB_PASSWORD'] %>"
-    host: "<%= ENV['STAGING_DB_HOST'] %>"
-    port: "<%= ENV['STAGING_DB_PORT'] %>"
+    name: _develop_staging
+    user: _develop_staging
+    password: dw889dt57b
+    host: mysql504.heteml.jp
+    charset: utf8
 
   exclude:
     - '.git/'
     - '.gitignore'
-    - '.gitmodules'
-    - '.env'
+    - '.sass-cache/'
     - 'node_modules/'
     - 'bin/'
     - 'tmp/*'
@@ -37,11 +43,3 @@ staging:
     - 'wp-config.php'
     - 'wp-content/*.sql.gz'
     - '*.orig'
-    - "wp-content/uploads/backwpup*/*"
-    - ".htaccess"
-
-  ssh:
-    host: "<%= ENV['STAGING_SSH_HOST'] %>"
-    user: "<%= ENV['STAGING_SSH_USER'] %>"
-    port: "<%= ENV['STAGING_SSH_PORT'] %>"
-    rsync_options: "--verbose"
