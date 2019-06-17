@@ -3,7 +3,7 @@
 ?>
 
 	<main>
-		<h1 data-headline>GOD WORLD</h1>
+		<h1 data-headline>HELLO WORLD</h1>
 		<p>ORIGINAL THEME</p>
 	</main>
 
